@@ -1,0 +1,4 @@
+Age: 19
+Height (m): 1.75
+First initial: C
+Enrolled in BIT235: true
