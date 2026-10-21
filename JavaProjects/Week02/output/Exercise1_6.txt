@@ -1,0 +1,4 @@
+Normal road consumption : 8.00 litres / 100 km
+Rough road consumption  : 9.20 litres / 100 km
+Distance on normal road : 500.00 km
+Distance on rough road  : 434.78 km

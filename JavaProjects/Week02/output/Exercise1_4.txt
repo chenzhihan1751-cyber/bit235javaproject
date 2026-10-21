@@ -1,0 +1,5 @@
+Principal (P)     : $5,000.00
+Interest rate (r) : 4% per year
+Time period (n)   : 10 years
+Amount (A)        : $7,401.22
+Interest earned   : $2,401.22

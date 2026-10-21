@@ -1,0 +1,4 @@
+Enter the first string : Enter the second string: Are the two given strings equal? false
+First character of string 1 : A
+First character of string 2 : A
+Are the first characters equal? true

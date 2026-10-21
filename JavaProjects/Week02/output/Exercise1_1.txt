@@ -1,0 +1,3 @@
+Enter the first integer : Enter the second integer: First number  = 42
+Second number = 15
+Difference    = 42 - 15 = 27

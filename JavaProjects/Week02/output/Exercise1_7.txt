@@ -1,0 +1,3 @@
+Original string : I love java programming
+substring(7, 11): "java"
+Length          : 4
