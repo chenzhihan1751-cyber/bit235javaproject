@@ -1,0 +1,17 @@
+﻿Length of the picture (inches):
+Width of the picture (inches):
+Type of frame (regular/fancy):
+Colour of the frame:
+Add crowns? (yes/no):
+Number of crowns:
+
+----------- Framing quote -----------
+Picture size        : 20.00 x 15.00 inches
+Frame               : regular, 1 inch wide
+Colour              : white
+Frame perimeter     : 78.00 inches
+Colouring  (0.10/in): $7.80
+Frame      (0.15/in): $11.70
+Crowns     (4 x $0.35): $1.40
+TOTAL COST          : $20.90
+-------------------------------------

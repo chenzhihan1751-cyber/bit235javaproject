@@ -1,0 +1,6 @@
+﻿boolean status                : true
+String.valueOf(status)        : true
+Characters in the String      : 4
+
+boolean inactive status       : false
+String.valueOf(inactive)      : false

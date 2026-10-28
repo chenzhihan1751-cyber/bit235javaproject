@@ -1,0 +1,19 @@
+﻿Task 1 - PI (10 decimal places)
+PI as a double : 3.1415926535
+PI as a float  : 3.1415927
+Difference     : -8.751257318806438E-8
+The float keeps only about 7 significant digits,
+so the last decimal places of PI are lost.
+
+Task 2 - dollar amount with 2 cent values
+Stored value   : 23.99
+Exact double   : 23.989999999999998436805981327779591083526611328125
+23.99 cannot be stored exactly in binary, so the double
+holds a value slightly below 23.99.  println only shows
+the shortest text that maps back to the same double.
+
+Task 3 - dollar amount with zero cents
+Stored value   : 23.0
+Exact double   : 23
+23.00 is a whole number and can be represented exactly,
+so no rounding error appears (printed as 23.0).

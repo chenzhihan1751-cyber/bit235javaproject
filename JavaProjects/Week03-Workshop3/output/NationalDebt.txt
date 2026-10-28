@@ -1,0 +1,12 @@
+﻿US national debt as a long : 38000000000000
+US national debt as an int : -1870635008
+Did the value change?      : true
+Why: an int keeps only the lowest 32 bits, so the
+value 38,000,000,000,000 wraps around to a negative int.
+
+US national debt as a double : 3.8E13
+US national debt as a byte   : -1
+Did the value change?        : true
+Why: the double is far outside the byte range, so it is
+first clamped to Integer.MAX_VALUE and only the lowest
+8 bits survive, which gives -1.

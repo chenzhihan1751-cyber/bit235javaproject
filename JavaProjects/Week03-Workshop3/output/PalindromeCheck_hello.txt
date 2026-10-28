@@ -1,0 +1,3 @@
+﻿Enter a word: Original word : hello
+Reversed word : olleh
+Result        : "hello" is NOT a palindrome.
