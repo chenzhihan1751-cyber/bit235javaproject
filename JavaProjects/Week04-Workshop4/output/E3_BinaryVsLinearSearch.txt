@@ -1,0 +1,12 @@
+﻿Sorted array:
+12 32 73 88 145 219 256 276 354 430 481 523 567 678 690 761 802 914 947 999
+
+Searching for 523:
+  Binary search (sorted): index = 11, comparisons = 3
+  Linear search (unsorted): index = 18, comparisons = 19
+  Binary search used 16 fewer comparisons.
+
+Searching for 500:
+  Binary search (sorted): index = -1, comparisons = 4
+  Linear search (unsorted): index = -1, comparisons = 20
+  Binary search used 16 fewer comparisons.
