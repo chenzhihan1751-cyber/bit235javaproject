@@ -110,6 +110,12 @@ def cover(doc, title, subtitle, intro_lines):
     set_font(run, "Calibri", 11.5, bold=True)
 
     para(doc, "", size=6)
+    gh = doc.add_paragraph()
+    gh.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    gh.paragraph_format.space_after = Pt(8)
+    run = gh.add_run("GitHub: https://github.com/chenzhihan1751-cyber/bit235javaproject"
+                     "/tree/main/JavaProjects/Week04-Workshop4")
+    set_font(run, "Calibri", 9.5, color=RGBColor(0x1F, 0x4E, 0x9A))
     for line in intro_lines:
         para(doc, line, size=10)
 
