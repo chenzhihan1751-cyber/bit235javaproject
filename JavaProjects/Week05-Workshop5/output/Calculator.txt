@@ -1,0 +1,3 @@
+﻿Multiplication of two integers: 15
+Multiplication of two doubles: 20.25
+Multiplication of three integers: 120

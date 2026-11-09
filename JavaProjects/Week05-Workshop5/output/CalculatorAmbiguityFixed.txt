@@ -1,0 +1,4 @@
+﻿Method 1
+30
+Method 2
+30

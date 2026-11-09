@@ -1,0 +1,78 @@
+﻿=== Step 3: one ZooKeeper object ===
+ZooKeeper ID : 1000000
+ZooKeeper    : Nina Park
+
+=== Steps 6-7: one Enclosure with a ZooKeeper assigned ===
+Type         : Enclosure
+Enclosure ID : E-001
+Capacity     : 6
+ZooKeeper    : Sam Lee
+
+=== Steps 8-11: several keepers and several enclosures ===
+Type         : Cage
+Enclosure ID : C-101
+Capacity     : 4
+ZooKeeper    : Sam Lee
+Mesh size    : 25.0 mm
+
+Type         : Aquarium
+Enclosure ID : A-101
+Capacity     : 12
+ZooKeeper    : Alex Kim
+Water type   : Salt water
+Depth        : 3.5 m
+
+Type         : Aviary
+Enclosure ID : V-101
+Capacity     : 30
+ZooKeeper    : Priya Nair
+Flight height: 8.0 m
+
+=== Steps 12-14: an Enclosure[] array holding different types ===
+Type         : Cage
+Enclosure ID : C-101
+Capacity     : 4
+ZooKeeper    : Sam Lee
+Mesh size    : 25.0 mm
+
+Type         : Aquarium
+Enclosure ID : A-101
+Capacity     : 12
+ZooKeeper    : Alex Kim
+Water type   : Salt water
+Depth        : 3.5 m
+
+Type         : Aviary
+Enclosure ID : V-101
+Capacity     : 30
+ZooKeeper    : Priya Nair
+Flight height: 8.0 m
+
+
+=== Steps 17-20: one ZooKeeper managing several enclosures ===
+ZooKeeper ID : 1000004
+ZooKeeper    : Dana Wong
+Enclosures managed by Dana Wong:
+  - C-201 (Cage, capacity 6)
+  - A-201 (Aquarium, capacity 10)
+  - V-201 (Aviary, capacity 25)
+
+=== Step 20: every keeper and their enclosures ===
+Enclosures managed by Nina Park:
+  (none)
+
+Enclosures managed by Sam Lee:
+  - E-001 (Enclosure, capacity 6)
+  - C-101 (Cage, capacity 4)
+
+Enclosures managed by Alex Kim:
+  - A-101 (Aquarium, capacity 12)
+
+Enclosures managed by Priya Nair:
+  - V-101 (Aviary, capacity 30)
+
+Enclosures managed by Dana Wong:
+  - C-201 (Cage, capacity 6)
+  - A-201 (Aquarium, capacity 10)
+  - V-201 (Aviary, capacity 25)
+

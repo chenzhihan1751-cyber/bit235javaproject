@@ -1,0 +1,15 @@
+﻿Zoo report - 2 enclosures
+======================
+Type         : Cage
+Enclosure ID : C-301
+Capacity     : 4
+ZooKeeper    : Sam Lee
+Mesh size    : 25.0 mm
+----------------------
+Type         : Aquarium
+Enclosure ID : A-301
+Capacity     : 8
+ZooKeeper    : Alex Kim
+Water type   : Salt water
+Depth        : 3.0 m
+----------------------

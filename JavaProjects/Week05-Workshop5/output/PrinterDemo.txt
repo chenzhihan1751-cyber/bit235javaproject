@@ -1,0 +1,4 @@
+﻿Message: Hello
+Number: 42
+Message and Number: Hello, 42
+Double value: 3.14

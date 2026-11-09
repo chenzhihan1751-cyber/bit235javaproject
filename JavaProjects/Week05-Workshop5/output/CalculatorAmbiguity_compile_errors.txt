@@ -1,0 +1,12 @@
+demo-errors\CalculatorAmbiguity.java:12: error: reference to calculate is ambiguous
+        System.out.println(calculate(10, 20));
+                           ^
+  both method calculate(int,long) in CalculatorAmbiguity and method calculate(long,int) in CalculatorAmbiguity match
+demo-errors\CalculatorAmbiguity.java:15: error: no suitable method found for calculate(double,double)
+        System.out.println(calculate(10.5, 20.5));
+                           ^
+    method CalculatorAmbiguity.calculate(int,long) is not applicable
+      (argument mismatch; possible lossy conversion from double to int)
+    method CalculatorAmbiguity.calculate(long,int) is not applicable
+      (argument mismatch; possible lossy conversion from double to long)
+2 errors

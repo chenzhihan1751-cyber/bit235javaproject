@@ -1,0 +1,5 @@
+﻿Integer: 5
+Double: 5.5
+String: Hello
+Integer: 65
+Double: 100.0
