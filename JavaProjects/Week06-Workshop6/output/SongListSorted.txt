@@ -1,0 +1,25 @@
+﻿Before sorting (order of the arrays):
+  Bohemian Rhapsody - Queen
+  Hotel California - Eagles
+  Imagine - John Lennon
+  Billie Jean - Michael Jackson
+  Shape of You - Ed Sheeran
+  Rolling in the Deep - Adele
+  Blinding Lights - The Weeknd
+  Smells Like Teen Spirit - Nirvana
+  Take On Me - A-ha
+  Hey Jude - The Beatles
+
+After bubble sort (songs alphabetical):
+1. Billie Jean - Michael Jackson
+2. Blinding Lights - The Weeknd
+3. Bohemian Rhapsody - Queen
+4. Hey Jude - The Beatles
+5. Hotel California - Eagles
+6. Imagine - John Lennon
+7. Rolling in the Deep - Adele
+8. Shape of You - Ed Sheeran
+9. Smells Like Teen Spirit - Nirvana
+10. Take On Me - A-ha
+
+Total songs stored: 10

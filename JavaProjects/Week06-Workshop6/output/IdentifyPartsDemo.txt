@@ -1,0 +1,8 @@
+﻿Class variables (static)   : x
+Instance variables         : y
+
+a.y = 5
+b.y = 6
+a.x = 2
+b.x = 2
+IdentifyMyParts.x = 2

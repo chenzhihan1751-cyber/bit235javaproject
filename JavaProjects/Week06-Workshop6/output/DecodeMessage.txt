@@ -1,0 +1,6 @@
+﻿Substitution key used for decoding
+  coded : abcdefghijklmnopqrstuvwxyz
+  plain : crgzavibsdoeqfhujxklwmynpt
+
+Coded message   : G tgsl Qefe.
+Decoded message : I like Java.

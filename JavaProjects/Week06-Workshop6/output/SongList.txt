@@ -1,0 +1,14 @@
+﻿My 10 favourite songs
+----------------------
+1. Bohemian Rhapsody - Queen
+2. Hotel California - Eagles
+3. Imagine - John Lennon
+4. Billie Jean - Michael Jackson
+5. Shape of You - Ed Sheeran
+6. Rolling in the Deep - Adele
+7. Blinding Lights - The Weeknd
+8. Smells Like Teen Spirit - Nirvana
+9. Take On Me - A-ha
+10. Hey Jude - The Beatles
+
+Total songs stored: 10

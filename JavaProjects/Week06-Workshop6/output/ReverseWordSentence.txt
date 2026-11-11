@@ -1,0 +1,3 @@
+﻿Original sentence : To be or not to be.
+Words reversed    : oT eb ro ton ot eb.
+Words processed   : 6

@@ -1,0 +1,14 @@
+﻿Search engine over 10 paragraphs
+==============================================
+Phrase searched : "keyword search"
+  index 2 : That would be like a keyword search.
+  index 6 : That is a question to test keyword search.
+  Matches found: 2
+
+Phrase searched : "needle"
+  index 7 : Can you find a needle in a hay stack?
+  Matches found: 1
+
+Phrase searched : "banana"
+  Phrase not found in any of the 10 paragraphs.
+
