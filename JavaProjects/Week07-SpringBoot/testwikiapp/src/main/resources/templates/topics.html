@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+  Rendered by WikiController.topics().
+  th:each loops over the "topics" list that the controller puts in the model.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${pageTitle} + ' - FMP Student Wiki'">Wiki topics</title>
+    <link rel="stylesheet" href="/css/wiki.css">
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a href="/index.html">Home</a>
+        <a class="current" href="/topics">Topics</a>
+        <a href="/about.html">About</a>
+    </nav>
+</header>
+
+<section class="page-head">
+    <div class="inner">
+        <h2 th:text="${pageTitle}">Wiki topics</h2>
+        <p>This list comes from the controller, not from the HTML file.</p>
+    </div>
+</section>
+
+<main>
+    <div class="list">
+        <a class="item" th:each="t : ${topics}" th:href="@{'/topics/' + ${t.slug}}">
+            <h3 th:text="${t.title}">Topic title</h3>
+            <p th:text="${t.summary}">Topic summary</p>
+        </a>
+    </div>
+</main>
+
+<footer>
+    <div class="inner">
+        FMP Student Wiki - Chen Zhihan (S1580887) - BIT235 Week 7 lab practice.
+    </div>
+</footer>
+
+</body>
+</html>

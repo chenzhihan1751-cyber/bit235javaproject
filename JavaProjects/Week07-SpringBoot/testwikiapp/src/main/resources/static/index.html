@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--
+  FMP Student Wiki - home page.
+  The CSS is embedded in the <head> on purpose: the page is one file that can be
+  opened straight from disk or served by Spring Boot from /static.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FMP Student Wiki - BIT235</title>
+    <style>
+        :root {
+            --ink: #171526;
+            --muted: #5b5a72;
+            --paper: #ffffff;
+            --shell: #f4f2fb;
+            --brand: #3b2a72;
+            --brand-soft: #ebe6fa;
+            --gold: #b8892b;
+            --line: #e2ddf2;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            color: var(--ink);
+            background: var(--shell);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--brand);
+            color: #fff;
+            padding: 22px 32px;
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        header .mark {
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: var(--gold);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -.01em;
+        }
+
+        nav a {
+            color: #ded8f5;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        nav a:hover, nav a.current { color: #fff; border-bottom: 2px solid var(--gold); }
+
+        .hero {
+            background: var(--paper);
+            border-bottom: 1px solid var(--line);
+            padding: 54px 32px 46px;
+        }
+
+        .hero .inner, main, footer .inner {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .hero p.lede {
+            font-size: 19px;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 14px 0 0;
+        }
+
+        h2 {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            color: var(--muted);
+            margin: 0 0 18px;
+        }
+
+        main { padding: 40px 32px 56px; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 20px 22px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform .12s ease, box-shadow .12s ease;
+        }
+
+        .card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(23, 21, 38, .09); }
+
+        .card h3 { margin: 0 0 6px; font-size: 17px; }
+
+        .card p { margin: 0; font-size: 14px; color: var(--muted); }
+
+        .rule { height: 1px; background: var(--line); margin: 42px 0; }
+
+        .note {
+            background: var(--brand-soft);
+            border-left: 4px solid var(--gold);
+            padding: 16px 20px;
+            font-size: 14px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            background: var(--paper);
+            padding: 22px 32px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a class="current" href="/index.html">Home</a>
+        <a href="/topics">Topics</a>
+        <a href="/about.html">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="inner">
+        <h2>BIT235 - Object Oriented Programming</h2>
+        <p class="lede">
+            A small wiki for the Java web development part of the course. It is built with
+            Spring Boot so the pages you read here are rendered by a controller, a model and
+            a Thymeleaf template - the same MVC pattern you use in Assessment 2.
+        </p>
+    </div>
+</section>
+
+<main>
+    <h2>Start here</h2>
+    <div class="cards">
+        <a class="card" href="/topics">
+            <h3>Wiki topics</h3>
+            <p>Four short notes on Spring Boot, MVC, Thymeleaf and running the app.</p>
+        </a>
+        <a class="card" href="/topics/mvc-in-spring-boot">
+            <h3>MVC in one page</h3>
+            <p>What happens between typing a URL and seeing HTML on the screen.</p>
+        </a>
+        <a class="card" href="/about.html">
+            <h3>About this app</h3>
+            <p>The stack, the folder layout and how the project was generated.</p>
+        </a>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="note">
+        Server side: Spring Boot 4.1.2 running on the embedded Tomcat at port 8080.
+        Everything on this page is plain HTML and CSS, with no build step for the front end.
+    </div>
+</main>
+
+<footer>
+    <div class="inner">
+        FMP Student Wiki - Chen Zhihan (S1580887) - BIT235 Week 7 lab practice.
+    </div>
+</footer>
+
+</body>
+</html>

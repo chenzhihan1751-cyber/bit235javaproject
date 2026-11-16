@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+  Rendered by WikiController.topic() for one slug, e.g. /topics/mvc-in-spring-boot
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${pageTitle} + ' - FMP Student Wiki'">Topic</title>
+    <link rel="stylesheet" href="/css/wiki.css">
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a href="/index.html">Home</a>
+        <a class="current" href="/topics">Topics</a>
+        <a href="/about.html">About</a>
+    </nav>
+</header>
+
+<main style="padding-top:42px;">
+    <div class="article">
+        <span class="slug" th:text="${topic.slug}">slug</span>
+        <h2 th:text="${topic.title}">Topic title</h2>
+        <p class="body" th:text="${topic.body}">Topic body.</p>
+        <a class="back" href="/topics">&larr; All topics</a>
+    </div>
+</main>
+
+<footer>
+    <div class="inner">
+        FMP Student Wiki - Chen Zhihan (S1580887) - BIT235 Week 7 lab practice.
+    </div>
+</footer>
+
+</body>
+</html>

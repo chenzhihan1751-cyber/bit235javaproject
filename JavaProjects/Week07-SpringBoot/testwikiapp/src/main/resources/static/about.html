@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About - FMP Student Wiki</title>
+    <link rel="stylesheet" href="/css/wiki.css">
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a href="/index.html">Home</a>
+        <a href="/topics">Topics</a>
+        <a class="current" href="/about.html">About</a>
+    </nav>
+</header>
+
+<section class="page-head">
+    <div class="inner">
+        <h2>About this application</h2>
+        <p>What was generated, which versions are used, and where the files live.</p>
+    </div>
+</section>
+
+<main>
+    <div class="article">
+        <h2 style="font-size:20px;margin:0 0 12px;">Stack</h2>
+        <p class="body">
+            Spring Boot 4.1.2 on Java 21, built with Maven. The project was generated with
+            Spring Initializr using three dependencies: Spring Web (MVC and the embedded
+            Tomcat server), Thymeleaf (server side HTML templates) and Spring Boot DevTools
+            (automatic restart while developing).
+        </p>
+
+        <h2 style="font-size:20px;margin:26px 0 12px;">Layout</h2>
+        <p class="body">
+            <code>src/main/java</code> holds <code>TestwikiappApplication</code> (the entry
+            point) and <code>WikiController</code> (the C in MVC).
+            <code>src/main/resources/static</code> holds the pages that do not need any
+            server data, and <code>src/main/resources/templates</code> holds the Thymeleaf
+            views used by <code>/topics</code>.
+        </p>
+
+        <h2 style="font-size:20px;margin:26px 0 12px;">Why the HTML is generated</h2>
+        <p class="body">
+            The brief asked for the HTML pages to be produced with an AI assistant, so the
+            markup and the CSS in this project were generated that way and then reviewed
+            and adjusted by hand. The pages share one small stylesheet instead of a CSS
+            framework, which keeps the project readable.
+        </p>
+
+        <a class="back" href="/index.html">&larr; Back to home</a>
+    </div>
+</main>
+
+<footer>
+    <div class="inner">
+        FMP Student Wiki - Chen Zhihan (S1580887) - BIT235 Week 7 lab practice.
+    </div>
+</footer>
+
+</body>
+</html>
