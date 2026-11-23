@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+  BIT235 Object Oriented Programming - Assessment 2 Part A
+  Student: Chen Zhihan    Student ID: S1580887
+  File: welcome.html
+
+  Shown by LoginController.showWelcome() after a successful sign in.
+  ${displayName} is the value the controller stored in the session.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome - FMP Student Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/wiki.css}" href="/css/wiki.css">
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a th:href="@{/logout}" href="/logout">Sign out</a>
+    </nav>
+</header>
+
+<main>
+    <section class="card wide">
+        <span class="tag">Signed in</span>
+        <!-- th:text replaces the placeholder text with the model value. -->
+        <h2 th:text="'Welcome, ' + ${displayName} + '!'">Welcome, Zhihan!</h2>
+        <p class="lede">The username and password matched the stored administrator
+            account, so the server created a session for this browser.</p>
+
+        <dl class="detail">
+            <dt>Signed in as</dt>
+            <dd th:text="${displayName}">Zhihan</dd>
+            <dt>Page</dt>
+            <dd>/welcome</dd>
+            <dt>Next stage</dt>
+            <dd>Part B - topics, articles and database storage</dd>
+        </dl>
+
+        <a class="link-button" th:href="@{/logout}" href="/logout">Sign out</a>
+    </section>
+</main>
+
+<footer>
+    BIT235 Object Oriented Programming &middot; Assessment 2 Part A &middot;
+    Chen Zhihan (S1580887)
+</footer>
+
+</body>
+</html>

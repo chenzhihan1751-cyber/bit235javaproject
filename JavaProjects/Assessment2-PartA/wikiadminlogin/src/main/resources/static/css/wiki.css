@@ -1,0 +1,242 @@
+/*
+ * BIT235 Object Oriented Programming - Assessment 2 Part A
+ * Student: Chen Zhihan    Student ID: S1580887
+ * File: wiki.css
+ *
+ * Styles shared by the login, error and welcome pages. The palette is the one
+ * used for the FMP Student Wiki in Week 7, so Part B can reuse this file.
+ */
+
+:root {
+    --ink: #171526;
+    --muted: #5b5a72;
+    --paper: #ffffff;
+    --shell: #f4f2fb;
+    --brand: #3b2a72;
+    --gold: #b8892b;
+    --line: #e2ddf2;
+    --danger: #a3231f;
+    --danger-soft: #fdeceb;
+    --ok-soft: #eef7ee;
+    --ok: #2f6b34;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--shell);
+    line-height: 1.6;
+}
+
+header {
+    background: var(--brand);
+    color: #fff;
+    padding: 20px 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+header .mark {
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--gold);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+header nav {
+    margin-left: auto;
+    font-size: 14px;
+}
+
+header nav a {
+    color: #ded8f5;
+    text-decoration: none;
+    margin-left: 18px;
+}
+
+header nav a:hover { color: #fff; border-bottom: 2px solid var(--gold); }
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 56px 24px;
+}
+
+.card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 30px 32px 34px;
+    box-shadow: 0 10px 30px rgba(23, 21, 38, .06);
+}
+
+.card.wide { max-width: 640px; }
+
+.card h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    letter-spacing: -.01em;
+}
+
+.card .lede {
+    margin: 0 0 22px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+label {
+    display: block;
+    margin: 16px 0 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--ink);
+    background: #fbfaff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(59, 42, 114, .12);
+}
+
+button {
+    margin-top: 24px;
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    color: #fff;
+    background: var(--brand);
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover { background: #2c1f57; }
+
+.banner {
+    margin: 0 0 18px;
+    padding: 11px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.banner.error {
+    color: var(--danger);
+    background: var(--danger-soft);
+    border-color: #f3c9c6;
+}
+
+.banner.notice {
+    color: var(--ok);
+    background: var(--ok-soft);
+    border-color: #cfe4cf;
+}
+
+.hint {
+    margin: 18px 0 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.hint code {
+    font-family: Consolas, "Courier New", monospace;
+    background: #f1eefb;
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+.link-button {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--brand);
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.link-button:hover { background: #2c1f57; }
+
+.plain-link {
+    display: inline-block;
+    margin-top: 22px;
+    font-size: 14px;
+    color: var(--brand);
+}
+
+.tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.detail {
+    margin: 18px 0 0;
+    padding: 14px 16px;
+    font-size: 14px;
+    background: #faf9ff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+.detail dt {
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.detail dt:first-child { margin-top: 0; }
+
+.detail dd {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 13px;
+}
+
+footer {
+    border-top: 1px solid var(--line);
+    background: var(--paper);
+    padding: 18px 32px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+}

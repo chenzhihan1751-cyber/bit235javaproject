@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  BIT235 Object Oriented Programming - Assessment 2 Part A
+  Student: Chen Zhihan    Student ID: S1580887
+  File: login.html
+
+  Rendered by LoginController.showLoginForm() and again by submitLogin() when
+  the credentials are wrong. It is a Thymeleaf template, so the browser receives
+  plain HTML: every th:* attribute is evaluated on the server and removed.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Administrator sign in - FMP Student Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/wiki.css}" href="/css/wiki.css">
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a href="/login">Sign in</a>
+    </nav>
+</header>
+
+<main>
+    <section class="card">
+        <span class="tag">Administrator area</span>
+        <h2>Sign in</h2>
+        <p class="lede">This wiki is read-only for visitors. Editing needs an
+            administrator account.</p>
+
+        <!-- Shown only after a successful sign out, when the URL ends in
+             ?loggedOut: the controller puts "notice" in the model for that case. -->
+        <p class="banner notice" th:if="${notice}" th:text="${notice}">You have been signed out.</p>
+
+        <!--
+          method="post" means the two values travel in the request body, not in
+          the address bar, so the password does not appear in the browser
+          history. action="/login" points at the @PostMapping in the controller.
+        -->
+        <form method="post" th:action="@{/login}" action="/login" autocomplete="off">
+            <label for="username">Username</label>
+            <!--
+              name="username" is what lets Spring fill LoginForm.setUsername()
+              with this value. th:value keeps whatever was typed if the page is
+              shown again, and required lets the browser reject an empty box
+              before the request is even sent.
+            -->
+            <input type="text" id="username" name="username"
+                   th:value="${loginForm.username}" value="" required autofocus>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign in</button>
+        </form>
+
+        <p class="hint">The account for this stage is <code>zhihan</code> with the
+            password <code>123</code>.</p>
+    </section>
+</main>
+
+<footer>
+    BIT235 Object Oriented Programming &middot; Assessment 2 Part A &middot;
+    Chen Zhihan (S1580887)
+</footer>
+
+</body>
+</html>

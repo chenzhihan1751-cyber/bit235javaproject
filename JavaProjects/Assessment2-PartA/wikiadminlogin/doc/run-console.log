@@ -1,0 +1,21 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.2)
+
+2026-11-23T16:06:45.400+08:00  INFO 6536 --- [wikiadminlogin] [           main] a.e.m.w.WikiAdminLoginApplication        : Starting WikiAdminLoginApplication v0.0.1-SNAPSHOT using Java 21.0.2 with PID 6536 (D:\VSCode代码\01-学校作业\BIT235-Java\JavaProjects\Assessment2-PartA\wikiadminlogin\target\wikiadminlogin-0.0.1-SNAPSHOT.jar started by zhihan in D:\VSCode代码\01-学校作业\BIT235-Java\JavaProjects\Assessment2-PartA\wikiadminlogin)
+2026-11-23T16:06:45.403+08:00  INFO 6536 --- [wikiadminlogin] [           main] a.e.m.w.WikiAdminLoginApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-11-23T16:06:46.464+08:00  INFO 6536 --- [wikiadminlogin] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-11-23T16:06:46.488+08:00  INFO 6536 --- [wikiadminlogin] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-23T16:06:46.488+08:00  INFO 6536 --- [wikiadminlogin] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.27]
+2026-11-23T16:06:46.521+08:00  INFO 6536 --- [wikiadminlogin] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1065 ms
+2026-11-23T16:06:46.888+08:00  INFO 6536 --- [wikiadminlogin] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-11-23T16:06:46.909+08:00  INFO 6536 --- [wikiadminlogin] [           main] a.e.m.w.WikiAdminLoginApplication        : Started WikiAdminLoginApplication in 2.024 seconds (process running for 2.63)
+2026-11-23T16:06:47.089+08:00  INFO 6536 --- [wikiadminlogin] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-23T16:06:47.090+08:00  INFO 6536 --- [wikiadminlogin] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-23T16:06:47.091+08:00  INFO 6536 --- [wikiadminlogin] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

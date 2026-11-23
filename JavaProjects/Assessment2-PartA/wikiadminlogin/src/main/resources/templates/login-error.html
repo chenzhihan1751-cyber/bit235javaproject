@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+  BIT235 Object Oriented Programming - Assessment 2 Part A
+  Student: Chen Zhihan    Student ID: S1580887
+  File: login-error.html
+
+  Returned by LoginController.submitLogin() when AuthService rejects the
+  credentials. The controller puts ${errorMessage} and ${username} in the model,
+  so this page always has a value to show.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in failed - FMP Student Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/wiki.css}" href="/css/wiki.css">
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a th:href="@{/login}" href="/login">Sign in</a>
+    </nav>
+</header>
+
+<main>
+    <section class="card">
+        <span class="tag">Error</span>
+        <h2>Sign in failed</h2>
+
+        <!-- th:text swaps the sentence for whatever the service returned. -->
+        <p class="banner error" th:text="${errorMessage}">
+            The username or password is incorrect.</p>
+
+        <!-- The username is echoed back so it can be corrected instead of
+             retyped. th:if removes the paragraph when the box was left empty. -->
+        <p class="hint" th:if="${username}">
+            Attempted username: <code th:text="${username}">zhihan</code>
+        </p>
+
+        <p class="hint">Nothing was saved and no session was created.</p>
+
+        <a class="link-button" th:href="@{/login}" href="/login">Back to sign in</a>
+    </section>
+</main>
+
+<footer>
+    BIT235 Object Oriented Programming &middot; Assessment 2 Part A &middot;
+    Chen Zhihan (S1580887)
+</footer>
+
+</body>
+</html>

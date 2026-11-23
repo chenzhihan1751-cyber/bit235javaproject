@@ -1,0 +1,18 @@
+﻿BIT235 Assessment 2 Part A - manual HTTP checks (Chen Zhihan, S1580887)
+Run at: 2026-11-23 16:07:53    Base URL: http://127.0.0.1:8081
+--------------------------------------------------------------------------------------------------------
+GET  /login                    -> 200   username input=True   password input=True
+GET  /                         -> 302   Location=http://127.0.0.1:8081/login
+POST /login zhihan / 123       -> 302   Location=http://127.0.0.1:8081/welcome;jsessionid=38C6058FA120E3065A1E12A98D8F0D68
+GET  /welcome (same session)   -> 200   <h2>Welcome, Zhihan!</h2>
+POST /login zhihan / 999       -> 200   rejected=True
+POST /login admin / 123        -> 200   rejected=True
+POST /login ZHIHAN / 123       -> 302   upper case accepted=True
+POST /login empty / empty      -> 200   asks for input=True
+POST /login zhihan / empty     -> 200   asks for input=True
+GET  /welcome (no session)     -> 302   Location=http://127.0.0.1:8081/login;jsessionid=05F702A36EAB4003D1A08E5FDB02EF6A
+GET  /logout                   -> 302   Location=http://127.0.0.1:8081/login?loggedOut=1
+GET  /welcome (after logout)   -> 302   session no longer valid=True
+GET  /topics                   -> 404   custom error page=True
+--------------------------------------------------------------------------------------------------------
+All twelve checks match the expected behaviour.

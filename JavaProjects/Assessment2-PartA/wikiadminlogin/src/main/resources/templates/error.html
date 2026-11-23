@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+  BIT235 Object Oriented Programming - Assessment 2 Part A
+  Student: Chen Zhihan    Student ID: S1580887
+  File: error.html
+
+  Spring Boot renders this template for an HTTP error such as a 404 or a 500,
+  and supplies ${status} and ${error}. It is separate from login-error.html so
+  the two pages never depend on each other's model attributes.
+-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page not available - FMP Student Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/wiki.css}" href="/css/wiki.css">
+</head>
+<body>
+
+<header>
+    <span class="mark">Melbourne Polytechnic</span>
+    <h1>FMP Student Wiki</h1>
+    <nav>
+        <a th:href="@{/login}" href="/login">Sign in</a>
+    </nav>
+</header>
+
+<main>
+    <section class="card">
+        <span class="tag">Error</span>
+        <h2>Page not available</h2>
+        <p class="banner error" th:text="'HTTP ' + ${status} + ' ' + ${error}">HTTP 404 Not Found</p>
+        <p class="hint">The address you asked for is not part of this application.</p>
+        <a class="link-button" th:href="@{/login}" href="/login">Back to sign in</a>
+    </section>
+</main>
+
+<footer>
+    BIT235 Object Oriented Programming &middot; Assessment 2 Part A &middot;
+    Chen Zhihan (S1580887)
+</footer>
+
+</body>
+</html>
