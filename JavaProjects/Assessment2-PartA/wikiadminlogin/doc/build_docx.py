@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 from docx import Document
-from docx.enum.section import WD_SECTION
+from docx.enum.section import WD_ORIENT, WD_SECTION
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 from docx.oxml import OxmlElement
@@ -147,6 +147,32 @@ def code_block(doc, text, size=8):
     run.font.color.rgb = INK
     doc.add_paragraph().paragraph_format.space_after = Pt(2)
     return table
+
+
+def landscape_section(doc):
+    """A landscape page, so a full desktop screenshot can be printed large."""
+    s = doc.add_section(WD_SECTION.NEW_PAGE)
+    s.orientation = WD_ORIENT.LANDSCAPE
+    s.page_width = Cm(29.7)
+    s.page_height = Cm(21.0)
+    s.left_margin = Cm(1.6)
+    s.right_margin = Cm(1.6)
+    s.top_margin = Cm(1.5)
+    s.bottom_margin = Cm(1.3)
+    return s
+
+
+def portrait_section(doc):
+    """Back to A4 portrait for the rest of the document."""
+    s = doc.add_section(WD_SECTION.NEW_PAGE)
+    s.orientation = WD_ORIENT.PORTRAIT
+    s.page_width = Cm(21.0)
+    s.page_height = Cm(29.7)
+    s.left_margin = Cm(2.4)
+    s.right_margin = Cm(2.4)
+    s.top_margin = Cm(2.0)
+    s.bottom_margin = Cm(2.0)
+    return s
 
 
 def figure(doc, filename, caption, width_cm=15.6):
@@ -348,6 +374,32 @@ body(doc, "The service takes its repository through the constructor rather than 
           "service a one-line lambda that returns an empty Optional, and the \"no account "
           "stored\" branch is covered without a database or a Spring context.")
 
+heading(doc, "3.1 The project in VS Code", level=2)
+body(doc, "Figures 1 and 2 on the two landscape pages that follow are whole VS Code windows, "
+          "not cropped pictures of one panel, and they are printed sideways so the text in "
+          "them stays readable. Figure 1 shows the explorer on the left with the four "
+          "packages under src/main/java, the static/css and templates folders under "
+          "resources, and the single test class under src/test. In the middle "
+          "AuthService.java is open at the javadoc comment for authenticate(), and at the "
+          "bottom the integrated terminal still holds the start-up log from "
+          "mvn spring-boot:run.")
+body(doc, "Figure 2 was taken in the same window after the run was stopped. The terminal now "
+          "holds the output of mvn test: the one test class, the ten test methods, and "
+          "BUILD SUCCESS. The prompt at the bottom is the project folder, so the screenshot "
+          "also shows where the command was typed. The console code page is set to UTF-8 "
+          "(chcp 65001) before Maven runs, which is why the Chinese characters in the "
+          "project path print correctly instead of turning into boxes.")
+
+landscape_section(doc)
+figure(doc, "06-vscode-project-and-run.png",
+       "Figure 1: the project in VS Code with the app started from the integrated terminal "
+       "(Tomcat on port 8081)", width_cm=26.0)
+doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
+figure(doc, "07-vscode-tests.png",
+       "Figure 2: mvn test in the integrated terminal, 10 tests, 0 failures",
+       width_cm=26.0)
+portrait_section(doc)
+
 # ---------------------------------------------------------------- 4
 
 heading(doc, "4. One request from click to page")
@@ -380,13 +432,13 @@ numbered(doc, "On a mismatch submitLogin puts the service message and the typed 
 # ---------------------------------------------------------------- 5
 
 heading(doc, "5. Task (a): the login page and the error pages")
-body(doc, "Figure 1 is the login page. The two fields are ordinary HTML inputs inside a form "
+body(doc, "Figure 3 is the login page. The two fields are ordinary HTML inputs inside a form "
           "with method=\"post\" and action=\"/login\". Posting means the password travels in "
           "the request body, so it never appears in the address bar or in the browser "
           "history. Both inputs carry required, which lets the browser stop an empty "
           "submission before a request is made; the server checks for empty values as well, "
           "because the attribute can be removed in the developer tools.")
-figure(doc, "01-login-page.png", "Figure 1: GET http://127.0.0.1:8081/login, the page a visitor sees first")
+figure(doc, "01-login-page.png", "Figure 3: GET http://127.0.0.1:8081/login, the page a visitor sees first")
 
 body(doc, "The page is a Thymeleaf template, not a static file. The stylesheet link uses "
           "th:href=\"@{/css/wiki.css}\", which rewrites the address if the application is "
@@ -399,13 +451,13 @@ body(doc, "There are two error templates, and the reason is practical. login-err
           "does not exist; Boot fills that page with status and error instead. Sharing one "
           "file between the two paths would mean one of them always has model attributes "
           "missing.")
-figure(doc, "02-error-page.png", "Figure 2: the error page after posting zhihan with the wrong password")
+figure(doc, "02-error-page.png", "Figure 4: the error page after posting zhihan with the wrong password")
 
-body(doc, "Figure 2 shows the rejection. The message is the same one a wrong username "
+body(doc, "Figure 4 shows the rejection. The message is the same one a wrong username "
           "produces, which is deliberate: a page that said \"wrong password\" would confirm "
           "to a stranger that the username exists. The typed username is echoed back so it "
           "can be corrected rather than retyped, and the password is not echoed at all.")
-figure(doc, "05-not-found.png", "Figure 3: the same error.html template serving a 404 for an address that does not exist")
+figure(doc, "05-not-found.png", "Figure 5: the same error.html template serving a 404 for an address that does not exist")
 
 # ---------------------------------------------------------------- 6
 
@@ -460,12 +512,12 @@ body(doc, "Both halves must match before LoginResult.success is built, so there 
 # ---------------------------------------------------------------- 7
 
 heading(doc, "7. Task (c): the welcome message and the rejection")
-body(doc, "A correct pair ends on the welcome page in Figure 4. The greeting comes from the "
+body(doc, "A correct pair ends on the welcome page in Figure 6. The greeting comes from the "
           "session, not from the URL: after a successful login the controller stores the "
           "display name under the key \"loggedInAdmin\", and showWelcome reads it back. Only "
           "the display name is stored. The password is not put in the session, because "
           "session attributes sit in server memory for as long as the session lives.")
-figure(doc, "03-welcome-page.png", "Figure 4: the welcome page after signing in as zhihan")
+figure(doc, "03-welcome-page.png", "Figure 6: the welcome page after signing in as zhihan")
 
 body(doc, "The redirect matters more than it looks. If the POST rendered the welcome page "
           "directly, the browser would reload that page with a form resubmission, and the "
@@ -474,16 +526,16 @@ body(doc, "The redirect matters more than it looks. If the POST rendered the wel
           "browser makes is a GET.")
 body(doc, "Signing out calls session.invalidate(), which discards every attribute and makes "
           "the cookie that Tomcat issued point at a session that no longer exists. The "
-          "visitor lands back on the login page with a short notice, shown in Figure 5, so "
+          "visitor lands back on the login page with a short notice, shown in Figure 7, so "
           "the page does not look like it simply reloaded.")
-figure(doc, "04-signed-out.png", "Figure 5: GET /login?loggedOut=1 after signing out")
+figure(doc, "04-signed-out.png", "Figure 7: GET /login?loggedOut=1 after signing out")
 
 # ---------------------------------------------------------------- 8
 
 heading(doc, "8. Testing")
 heading(doc, "8.1 Unit tests", level=2)
 body(doc, "AuthServiceTests covers the rule without starting a web server. Ten tests, all "
-          "passing:")
+          "passing, and Figure 2 shows them going through in the VS Code terminal:")
 code_block(doc,
            "Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, "
            "Time elapsed: 0.112 s -- in au.edu.mp.wikiadminlogin.AuthServiceTests", size=8)
