@@ -344,25 +344,12 @@ body(doc, "Two other ways in: run WikiAdminLoginApplication from VS Code, or run
 # ---------------------------------------------------------------- 3
 
 heading(doc, "3. How the code is organised")
-body(doc, "The packages follow the three layers the rubric asks for, plus a model package "
-          "for the objects that travel between them.")
-data_table(
-    doc,
-    ["File", "Responsibility"],
-    [
-        ["controller/LoginController.java", "Maps the four URLs, moves data between the request, the service and the views"],
-        ["service/AuthService.java", "Decides whether the submitted pair matches the stored account, and owns the messages"],
-        ["repository/AdminAccountRepository.java", "Interface the service depends on; hides where accounts live"],
-        ["repository/InMemoryAdminAccountRepository.java", "The hard-coded account behind that interface"],
-        ["model/AdminAccount.java", "Record for one administrator: username, password, display name"],
-        ["model/LoginForm.java", "Bean that receives the two posted fields"],
-        ["model/LoginResult.java", "What the service returns: matched or not, the message, the account"],
-        ["templates/*.html", "Four Thymeleaf views: login, login-error, welcome, error"],
-        ["static/css/wiki.css", "One stylesheet shared by all four pages"],
-        ["src/test/.../AuthServiceTests.java", "Ten JUnit tests for the credential rule"],
-    ],
-    widths=[6.3, 9.9],
-)
+body(doc, "The code follows the three layers the rubric asks for, plus a model package for "
+          "the objects that travel between them, and all of it sits under "
+          "au.edu.mp.wikiadminlogin next to a templates folder and one stylesheet. Figure 1, on the "
+          "first of the landscape pages that follow, is that arrangement as a picture: one "
+          "box per layer, the file that carries it, and an arrow for each dependency. Nothing points back up to the controller, which is "
+          "what keeps the layers apart in practice and not only in the folder names.")
 body(doc, "The split is not decoration. The controller deals in HTTP and knows nothing about "
           "passwords; the service deals in passwords and knows nothing about requests; the "
           "repository is the only place that knows the account is a constant rather than a "
@@ -375,15 +362,15 @@ body(doc, "The service takes its repository through the constructor rather than 
           "stored\" branch is covered without a database or a Spring context.")
 
 heading(doc, "3.1 The project in VS Code", level=2)
-body(doc, "Figures 1 and 2 on the two landscape pages that follow are whole VS Code windows, "
+body(doc, "Figures 2 and 3, on the second and third landscape pages that follow, are whole VS Code windows, "
           "not cropped pictures of one panel, and they are printed sideways so the text in "
-          "them stays readable. Figure 1 shows the explorer on the left with the four "
+          "them stays readable. Figure 2 shows the explorer on the left with the four "
           "packages under src/main/java, the static/css and templates folders under "
           "resources, and the single test class under src/test. In the middle "
           "AuthService.java is open at the javadoc comment for authenticate(), and at the "
           "bottom the integrated terminal still holds the start-up log from "
           "mvn spring-boot:run.")
-body(doc, "Figure 2 was taken in the same window after the run was stopped. The terminal now "
+body(doc, "Figure 3 was taken in the same window after the run was stopped. The terminal now "
           "holds the output of mvn test: the one test class, the ten test methods, and "
           "BUILD SUCCESS. The prompt at the bottom is the project folder, so the screenshot "
           "also shows where the command was typed. The console code page is set to UTF-8 "
@@ -391,54 +378,54 @@ body(doc, "Figure 2 was taken in the same window after the run was stopped. The 
           "project path print correctly instead of turning into boxes.")
 
 landscape_section(doc)
+figure(doc, "08-layers.png",
+       "Figure 1: the four packages, the model objects they pass around, and the views "
+       "they render", width_cm=25.0)
+doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
 figure(doc, "06-vscode-project-and-run.png",
-       "Figure 1: the project in VS Code with the app started from the integrated terminal "
+       "Figure 2: the project in VS Code with the app started from the integrated terminal "
        "(Tomcat on port 8081)", width_cm=26.0)
 doc.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
 figure(doc, "07-vscode-tests.png",
-       "Figure 2: mvn test in the integrated terminal, 10 tests, 0 failures",
+       "Figure 3: mvn test in the integrated terminal, 10 tests, 0 failures",
        width_cm=26.0)
 portrait_section(doc)
 
 # ---------------------------------------------------------------- 4
 
 heading(doc, "4. One request from click to page")
-body(doc, "The sequence below is what I would walk through in the demonstration. Class and "
-          "method names are the ones in the code.")
-numbered(doc, "The browser asks for /login. DispatcherServlet matches the URL against "
-              "LoginController.showLoginForm, which is annotated @GetMapping(\"/login\").")
-numbered(doc, "The method puts a new LoginForm in the Model and returns the string "
-              "\"login\". The Thymeleaf view resolver turns that name into "
-              "templates/login.html; Thymeleaf evaluates the th:* attributes on the server "
-              "and the browser receives plain HTML.")
-numbered(doc, "The form posts to the same /login address. The HTTP method is different, so "
-              "Spring routes it to submitLogin, annotated @PostMapping(\"/login\").")
-numbered(doc, "@ModelAttribute builds the LoginForm from the two request parameters, "
-              "calling setUsername and setPassword because the inputs are named username "
-              "and password.")
-numbered(doc, "The controller calls authService.authenticate(username, password). The "
-              "service asks the repository for the account, normalises the input and "
-              "compares both halves.")
-numbered(doc, "On a match the controller writes the display name into the HttpSession and "
-              "returns \"redirect:/welcome\". The browser receives a 302 and fetches the "
-              "welcome page; a refresh therefore cannot resubmit the form.")
-numbered(doc, "On that GET, showWelcome reads the session attribute. Present: the name "
-              "goes into the Model and welcome.html is rendered. Absent: the visitor is "
-              "redirected to /login, so typing /welcome by hand shows nothing.")
-numbered(doc, "On a mismatch submitLogin puts the service message and the typed username in "
-              "the Model and returns \"login-error\", which renders the error page with a "
-              "link back to the form.")
+body(doc, "Figure 4, on the landscape page that follows, is that walk-through as a diagram, which is easier to follow in the "
+          "demonstration than a paragraph. Read it from the top: the browser asks for "
+          "/login, DispatcherServlet matches the address against "
+          "@GetMapping(\"/login\") on LoginController.showLoginForm, the method puts a new "
+          "LoginForm in the Model and returns the string \"login\", and Thymeleaf turns "
+          "that name into templates/login.html.")
+landscape_section(doc)
+figure(doc, "09-request-flow.png",
+       "Figure 4: one request, from the click to the page that comes back", width_cm=19.0)
+portrait_section(doc)
+body(doc, "The form posts to the same address, so the HTTP method differs and Spring routes "
+          "the request to the @PostMapping instead. @ModelAttribute fills the LoginForm from "
+          "the two request parameters, the controller passes both values to "
+          "AuthService.authenticate(), and the service asks the repository for the account "
+          "before it compares anything.")
+body(doc, "On a match the controller writes the display name into the HttpSession and "
+          "returns \"redirect:/welcome\", so the browser receives a 302 and then fetches "
+          "the welcome page; a refresh cannot resubmit the form that way. On a mismatch it "
+          "puts the service message and the typed username in the Model and returns "
+          "\"login-error\". Tying /welcome to the session is also what stops somebody who "
+          "types that address by hand from landing on the page.")
 
 # ---------------------------------------------------------------- 5
 
 heading(doc, "5. Task (a): the login page and the error pages")
-body(doc, "Figure 3 is the login page. The two fields are ordinary HTML inputs inside a form "
+body(doc, "Figure 5 is the login page. The two fields are ordinary HTML inputs inside a form "
           "with method=\"post\" and action=\"/login\". Posting means the password travels in "
           "the request body, so it never appears in the address bar or in the browser "
           "history. Both inputs carry required, which lets the browser stop an empty "
           "submission before a request is made; the server checks for empty values as well, "
           "because the attribute can be removed in the developer tools.")
-figure(doc, "01-login-page.png", "Figure 3: GET http://127.0.0.1:8081/login, the page a visitor sees first")
+figure(doc, "01-login-page.png", "Figure 5: GET http://127.0.0.1:8081/login, the page a visitor sees first")
 
 body(doc, "The page is a Thymeleaf template, not a static file. The stylesheet link uses "
           "th:href=\"@{/css/wiki.css}\", which rewrites the address if the application is "
@@ -451,13 +438,13 @@ body(doc, "There are two error templates, and the reason is practical. login-err
           "does not exist; Boot fills that page with status and error instead. Sharing one "
           "file between the two paths would mean one of them always has model attributes "
           "missing.")
-figure(doc, "02-error-page.png", "Figure 4: the error page after posting zhihan with the wrong password")
+figure(doc, "02-error-page.png", "Figure 6: the error page after posting zhihan with the wrong password")
 
-body(doc, "Figure 4 shows the rejection. The message is the same one a wrong username "
+body(doc, "Figure 6 shows the rejection. The message is the same one a wrong username "
           "produces, which is deliberate: a page that said \"wrong password\" would confirm "
           "to a stranger that the username exists. The typed username is echoed back so it "
           "can be corrected rather than retyped, and the password is not echoed at all.")
-figure(doc, "05-not-found.png", "Figure 5: the same error.html template serving a 404 for an address that does not exist")
+figure(doc, "05-not-found.png", "Figure 7: the same error.html template serving a 404 for an address that does not exist")
 
 # ---------------------------------------------------------------- 6
 
@@ -512,12 +499,12 @@ body(doc, "Both halves must match before LoginResult.success is built, so there 
 # ---------------------------------------------------------------- 7
 
 heading(doc, "7. Task (c): the welcome message and the rejection")
-body(doc, "A correct pair ends on the welcome page in Figure 6. The greeting comes from the "
+body(doc, "A correct pair ends on the welcome page in Figure 8. The greeting comes from the "
           "session, not from the URL: after a successful login the controller stores the "
           "display name under the key \"loggedInAdmin\", and showWelcome reads it back. Only "
           "the display name is stored. The password is not put in the session, because "
           "session attributes sit in server memory for as long as the session lives.")
-figure(doc, "03-welcome-page.png", "Figure 6: the welcome page after signing in as zhihan")
+figure(doc, "03-welcome-page.png", "Figure 8: the welcome page after signing in as zhihan")
 
 body(doc, "The redirect matters more than it looks. If the POST rendered the welcome page "
           "directly, the browser would reload that page with a form resubmission, and the "
@@ -526,16 +513,16 @@ body(doc, "The redirect matters more than it looks. If the POST rendered the wel
           "browser makes is a GET.")
 body(doc, "Signing out calls session.invalidate(), which discards every attribute and makes "
           "the cookie that Tomcat issued point at a session that no longer exists. The "
-          "visitor lands back on the login page with a short notice, shown in Figure 7, so "
+          "visitor lands back on the login page with a short notice, shown in Figure 9, so "
           "the page does not look like it simply reloaded.")
-figure(doc, "04-signed-out.png", "Figure 7: GET /login?loggedOut=1 after signing out")
+figure(doc, "04-signed-out.png", "Figure 9: GET /login?loggedOut=1 after signing out")
 
 # ---------------------------------------------------------------- 8
 
 heading(doc, "8. Testing")
 heading(doc, "8.1 Unit tests", level=2)
 body(doc, "AuthServiceTests covers the rule without starting a web server. Ten tests, all "
-          "passing, and Figure 2 shows them going through in the VS Code terminal:")
+          "passing, and Figure 3 shows them going through in the VS Code terminal:")
 code_block(doc,
            "Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, "
            "Time elapsed: 0.112 s -- in au.edu.mp.wikiadminlogin.AuthServiceTests", size=8)
